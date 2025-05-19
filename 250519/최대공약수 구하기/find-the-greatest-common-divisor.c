@@ -1,35 +1,17 @@
 #include <stdio.h>
 
-int min(int i,int j){
-    if(i<j){
-        return i;
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
     }
-    
-    else{
-        return j;
-    }
+    return a;
 }
-
-void gmin(int a,int b){
-        int j=0;
-        for(int i=1;i<min(a,b);i++){
-            if(min(a,b)%i==0){
-                j=i;
-            }
-            
-        }
-        printf("%d",j);
-}
-
-
-
 
 int main() {
     int n, m;
     scanf("%d %d", &n, &m);
-
-    
-    gmin(n,m);
-    
+    printf("%d\n", gcd(n, m));
     return 0;
 }
