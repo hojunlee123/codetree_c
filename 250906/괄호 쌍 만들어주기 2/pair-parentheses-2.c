@@ -1,25 +1,23 @@
 #include <stdio.h>
+#include <string.h>
 
-int n;
-int a[1003];
+char str[101];
 
 int main() {
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-        scanf("%d", &a[i]);
+    scanf("%s", str);
+    int n = strlen(str);
 
-    int min_sum = 1e9;
+    int open = 0;
+    int ans = 0;
 
-    for (int start = 0; start < n; start++) {
-        int total = 0;
-        for (int i = 0; i < n; i++) {
-            int dist = (i - start + n) % n;
-            total += a[i] * dist;
+    for (int i = 0; i < n; i++) {
+        if (str[i] == '(') {
+            open++;
+        } else if (str[i] == ')') {
+            ans += open;
         }
-        if (total < min_sum)
-            min_sum = total;
     }
 
-    printf("%d\n", min_sum);
+    printf("%d\n", ans);
     return 0;
 }
